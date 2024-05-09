@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: pdfRAG
+  datasource:
+    url: jdbc:postgresql://localhost:5432/pdfRAG
+    username: admin
+    password: password
+  ai:
+    openai:
+      api-key: ${OPEN_AI_KEY}
+      chat:
+        options:
+          model: gpt-4
+  vectorstore:
+    pgvector:
+    index-type: HNSW
+    distance-type: COSINE_DISTANCE
+    dimension: 1536
+  docker:
+    compose:
+      lifecycle-management: start_only
+      enabled: false
+    main:
+      banner-mode: off
+  logging:
+    level:
+      root: off
