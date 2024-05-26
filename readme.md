@@ -5,7 +5,7 @@ This project meant to embed a pdf in pgVector store database so that we can ask 
 
 ## How to run:
 
-1. This project requires docker compose support or docker desktop to consume the compose.yml ![docker compose support image](dockercomposesupport.png) **Note** if you start both you may run  into issues- *see common issues*
+1. This project requires docker compose support or docker desktop to consume the compose.yml ![docker compose support image](dockercomposesupport.png) **Note** if you start both you may run  into issues- [see common issues](https://github.com/Alewis103/PDFRAG/blob/master/readme.md#common-issues)
 2. Start services before running application this should create the vector db using the schema ddl and the compose.yml ![intellij services image](intellijservicesrunning.png)
 
 
