@@ -1,7 +1,7 @@
 ## Goal of this project:
 This project meant to embed a pdf in pgVector store database so that we can ask we questions about the book (The application I wish I had in college !). The initial version will use openAi's models but in the future would like to try more open source models.
 
-🗒️ This project is inspired by [Dan Vega's SpringAi PgVecotr Rag Tutorial](https://youtu.be/ZoPVGrB8iHU?si=Fqxy8QPgkey1lmoM)
+🗒️ This project is inspired by [Dan Vega's SpringAi PgVector Rag Tutorial](https://youtu.be/ZoPVGrB8iHU?si=Fqxy8QPgkey1lmoM)
 
 ## How to run:
 
