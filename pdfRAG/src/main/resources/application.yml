@@ -1,6 +1,10 @@
 spring:
   application:
     name: pdfRAG
+    swagger:
+      api:
+        title: Theology of Arithmetic Tutor
+        description: A Rest API for query openAI gpt-4 with a pgvector store RAG
   datasource:
     url: jdbc:postgresql://localhost:5432/pdfRAG
     username: admin
@@ -25,3 +29,6 @@ spring:
   logging:
     level:
       root: off
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
