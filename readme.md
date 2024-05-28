@@ -17,5 +17,8 @@ This project meant to embed a pdf in pgVector store database so that we can ask 
 For this I referred to some really useful stackoverflow posts: 
 1. [How to configure PostgreSQL to accept all incoming connections](https://stackoverflow.com/questions/3278379/how-to-configure-postgresql-to-accept-all-incoming-connections)
 2. [Java Springboot application returning password authentication failed for user](https://stackoverflow.com/questions/45400538/java-springboot-application-returning-password-authentication-failed-for-user-p)
+3. [If you're on windows you may need to kill duplicate processes](https://nerdschalk.com/how-to-kill-a-process-on-port-on-windows-11/)
+![cmd prompt kill services](pidkillexample.png)
 
-After these two I was able to get passed that pesky error **note if you're using intellij you don't and shouldn't start docker desktop as you can create situation where you have a collision in terms of listening to ports**.
+
+After these three I was able to get passed that pesky error
