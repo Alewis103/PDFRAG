@@ -11,10 +11,21 @@ spring:
     password: password
   ai:
     openai:
-      api-key: ${OPEN_AI_KEY}
+      api-key: ${OPENAI_API_KEY}
       chat:
+        enabled: false
         options:
           model: gpt-4
+
+    ollama:
+      base-url: http://localhost:11434
+      embedding:
+        options:
+          model: llava
+      chat:
+        enabled: true
+        options:
+          model: llava
   vectorstore:
     pgvector:
     index-type: HNSW

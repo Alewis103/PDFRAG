@@ -10,3 +10,16 @@ services:
       - "org.springframework.boot.service-connection=postgres"
     ports:
       - '5432:5432'
+
+  ollama:
+    image: 'ollama/ollama:latest'
+    volumes: ollamadata:/root/.ollama
+    ports: '11434:11434'
+
+volumes:
+  ollamadata:
+    driver: 'local'
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: ${local_filesystem}
