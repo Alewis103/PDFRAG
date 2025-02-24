@@ -1,0 +1,24 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: admin
+      comment: Create SPRING_AI_VECTORS table
+      changes:
+        - createTable:
+            tableName: SPRING_AI_VECTORS
+            columns:
+              - column:
+                  name: id
+                  type: NUMBER
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: content
+                  type: VARCHAR(2000)
+              - column:
+                  name: metadata
+                  type: VARCHAR(2000)
+              - column:
+                  name: embedding
+                  type: VECTOR(4096, FLOAT64)  # Custom Oracle data type

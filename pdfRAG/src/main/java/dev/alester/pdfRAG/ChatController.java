@@ -24,13 +24,13 @@ public class ChatController {
     @Value("classpath:/prompts/Theology-of-arithmetic.st")
     private Resource ragPromptTemplate;
 
-    public ChatController(ChatClient.Builder chatClientBuilder, VectorStore vectorStore){
+    public ChatController(ChatClient.Builder chatClientBuilder, VectorStore vectorStore) {
         this.chatClient = chatClientBuilder.build();
         this.vectorStore = vectorStore;
     }
 
-    @GetMapping(value= "/ask", produces= "text/plain")
-    public String ask(@RequestParam(value = "message", defaultValue = "Can you explain the Foreword of the document like I am 5") String message){
+    @GetMapping(value = "/ask", produces = "text/plain")
+    public String ask(@RequestParam(value = "message", defaultValue = "Can you explain the Foreword of the document like I am 5") String message) {
         List<Document> similarDocuments = vectorStore.similaritySearch(SearchRequest.builder().query(message).topK(2).similarityThreshold(0.5).build());
         List<String> contentList = similarDocuments.stream().map(Document::getFormattedContent).toList();
         PromptTemplate promptTemplate = new PromptTemplate(ragPromptTemplate);
