@@ -5,32 +5,59 @@ spring:
       api:
         title: Theology of Arithmetic Tutor
         description: A Rest API for query openAI gpt-4 with a pgvector store RAG
-  datasource:
-    url: jdbc:postgresql://localhost:5432/pdfRAG
-    username: admin
-    password: password
   ai:
-    openai:
-      api-key: ${OPENAI_API_KEY}
-      chat:
-        enabled: false
-        options:
-          model: gpt-4
-
     ollama:
+      init:
+        pull-model-strategy: when_missing
       base-url: http://localhost:11434
       embedding:
         options:
           model: llava
+          num-thread: 8
+          num-gpu: 1
+          num-ctx: 4096
+          keep_alive:
       chat:
-        enabled: true
+        enabled: false
         options:
           model: llava
-  vectorstore:
-    pgvector:
-    index-type: HNSW
-    distance-type: COSINE_DISTANCE
-    dimension: 1536
+    vectorstore:
+      oracle:
+        index-type: IVF
+        distance-type: COSINE
+        dimensions: 4096
+        forced-normalization: true
+  datasource:
+    url: jdbc:oracle:thin:@//localhost:50869/freepdb1
+    username: mlops
+    password: mlops
+    oraclepassword: secret
+    hikari:
+      connection-properties:
+        internal_logon: sysdba
+  liquibase:
+    change-log: classpath:db/changelog/changelog-master.yml
+    url: jdbc:oracle:thin:@//localhost:50869/freepdb1
+
+
+
+logging:
+  level:
+    liquibase: DEBUG
+
+
+#    openai:
+#      api-key: ${OPEN_AI_KEY}
+#      chat:
+#        enabled: false
+#        options:
+#          model: gpt-4
+
+  sql:
+    init:
+      mode: always
+
+
   docker:
     compose:
       lifecycle-management: start_only

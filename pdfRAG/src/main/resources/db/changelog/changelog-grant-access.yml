@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: admin
+      comment: Grant DBA access to MLOPS
+      changes:
+        - sql:
+            dbms: oracle
+            sql: |
+              GRANT DBA TO MLOPS;

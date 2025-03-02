@@ -33,12 +33,12 @@ public class PDFLoader implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        Integer count = jdbcClient.sql("select count(*) from vector_store")
+        Integer count = jdbcClient.sql("select count(*) from SPRING_AI_VECTORS")
                 .query(Integer.class)
                 .single();
         log.info("Current count of the Vector Store: {}", count);
         if (count == 0) {
-            log.info("Loading Spring Boot Reference PDF into Vector Store");
+            log.info("Loading Theology of Arithmetic PDF into Vector Store");
             var config = PdfDocumentReaderConfig.builder()
                     .withPageExtractedTextFormatter(new ExtractedTextFormatter.Builder().withNumberOfBottomTextLinesToDelete(0)
                             .withNumberOfTopPagesToSkipBeforeDelete(0)

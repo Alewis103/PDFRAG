@@ -19,6 +19,7 @@ For this I referred to some really useful stackoverflow posts:
 2. [Java Springboot application returning password authentication failed for user](https://stackoverflow.com/questions/45400538/java-springboot-application-returning-password-authentication-failed-for-user-p)
 3. [If you're on windows you may need to kill duplicate processes](https://nerdschalk.com/how-to-kill-a-process-on-port-on-windows-11/)
 ![cmd prompt kill services](pidkillexample.png)
+4. [Sometimes you may have to kill the postgreSql Server in the background, this can be done simply using task manager if you're on windows](postgresKill.png)
 
 
-After these three I was able to get passed that pesky error
+After these four I was able to get passed that pesky error
