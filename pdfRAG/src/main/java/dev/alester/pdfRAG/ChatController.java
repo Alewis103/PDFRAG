@@ -1,5 +1,7 @@
 package dev.alester.pdfRAG;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.chat.prompt.PromptTemplate;
@@ -7,6 +9,7 @@ import org.springframework.ai.document.Document;
 import org.springframework.ai.vectorstore.SearchRequest;
 import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.core.io.Resource;
 
@@ -20,6 +23,7 @@ import java.util.Map;
 public class ChatController {
     private final ChatClient chatClient;
     private final VectorStore vectorStore;
+    private static final Logger log = LoggerFactory.getLogger(ChatController.class);
 
     @Value("classpath:/prompts/Theology-of-arithmetic.st")
     private Resource ragPromptTemplate;
@@ -31,8 +35,9 @@ public class ChatController {
 
     @GetMapping(value = "/ask", produces = "text/plain")
     public String ask(@RequestParam(value = "message", defaultValue = "Can you explain the Foreword of the document like I am 5") String message) {
-        List<Document> similarDocuments = vectorStore.similaritySearch(SearchRequest.builder().query(message).topK(2).similarityThreshold(0.5).build());
+        List<Document> similarDocuments = vectorStore.similaritySearch(SearchRequest.builder().query(message).topK(4).similarityThreshold(0.4).build());
         List<String> contentList = similarDocuments.stream().map(Document::getFormattedContent).toList();
+        log.info("Similar Documents: {} ", contentList);
         PromptTemplate promptTemplate = new PromptTemplate(ragPromptTemplate);
         Map<String, Object> promptParameters = new HashMap<>();
         promptParameters.put("input", message);

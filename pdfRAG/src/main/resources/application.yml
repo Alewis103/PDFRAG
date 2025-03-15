@@ -16,6 +16,8 @@ spring:
           num-thread: 8
           num-gpu: 1
           num-ctx: 4096
+          temperature: 0
+          top-k: 3
           keep_alive:
       chat:
         options:
